@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/models/article_model.dart';
 import 'package:news_app/services/news_service.dart';
 import 'package:news_app/views/news_list_view.dart';
@@ -30,13 +31,14 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
       future: future,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return NewsListView(articles: snapshot.data!); 
+          return NewsListView(articles: snapshot.data!);
         } else if (snapshot.hasError) {
-          return const SliverToBoxAdapter(
+          return SliverToBoxAdapter(
+            
             child: Center(
                 child: Text(
               'Oops Try Again Later!',
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 32.sp, fontWeight: FontWeight.bold),
             )),
           );
         } else {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/components/category_compoenent.dart';
 import 'package:news_app/models/category_model.dart';
 
@@ -21,13 +22,14 @@ class CategoryListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 95,
+      height: MediaQuery.sizeOf(context).height / 8, // 95
       child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.only(right: 15),
+            padding: EdgeInsets.only(left: 10.w),
             child: CategoryCard(category: categories[index]),
           );
         },

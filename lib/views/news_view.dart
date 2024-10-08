@@ -3,8 +3,8 @@ import 'package:news_app/views/category_list_view.dart';
 import 'package:news_app/views/new_list_view_builder.dart';
 
 class NewsView extends StatelessWidget {
-  final String category; 
-  const NewsView({super.key , required this.category});
+  final String category;
+  const NewsView({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) {
@@ -26,22 +26,19 @@ class NewsView extends StatelessWidget {
                 ),
               ],
             )),
-        body:  Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: CustomScrollView(
-            physics: const BouncingScrollPhysics(),
-            slivers: [
-             const SliverToBoxAdapter(child: CategoryListView()),
-             const SliverToBoxAdapter(
-                child: SizedBox(
-                  height: 22,
-                ),
+        body: CustomScrollView(
+          physics: const BouncingScrollPhysics(),
+          slivers: [
+            const SliverToBoxAdapter(child: CategoryListView()),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: MediaQuery.sizeOf(context).width / 20,
               ),
-              NewsListViewBuilder(
-                category: category,
-              ),
-            ],
-          ),
+            ),
+            NewsListViewBuilder(
+              category: category,
+            ),
+          ],
         ));
   }
 }
